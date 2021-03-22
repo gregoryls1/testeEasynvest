@@ -1,0 +1,34 @@
+$primary-color: #00c8b3;
+$secondary-color: #ffffff;
+$input-border-color: #efeeed;
+$input-color: #333333;
+$error-color: #eb4a46;
+$table-border-color: #efeeed;
+$table-hover-color: #efeeed;
+$save-color: #4CAF50;
+$cancel-color: #F44336;
+$disabled-color: #f6f6f6; 
+$disabled-font-color: #dddcdc;
+
+@mixin flex-container($flex-direction: row) {
+  display: flex;
+  flex-direction: $flex-direction;
+}
+
+@mixin box-shadow($top, $left, $blur, $color, $inset: "") {
+  -webkit-box-shadow:$top $left $blur $color #{$inset};
+  -moz-box-shadow:$top $left $blur $color #{$inset};
+  box-shadow:$top $left $blur $color #{$inset};
+}
+
+@mixin transition($duration, $attribute, $effect) {
+  transition: $duration $attribute $effect;
+}
+
+@mixin gradient-background($start-color, $end-color) {
+  background: -moz-linear-gradient(left, $start-color 10%, $end-color);
+  background: -webkit-linear-gradient(left, $start-color 10%, $end-color);
+  background: -o-linear-gradient(left, $start-color 10%, $end-color);
+  background: -ms-linear-gradient(left, $start-color 10%, $end-color);
+  background: linear-gradient(to right, $start-color 10%, $end-color);
+}

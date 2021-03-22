@@ -1,2 +1,12 @@
 @import './assets/stylesheets/reset.css';
 @import './assets/stylesheets/typography.scss';
+@import './assets/stylesheets/vars.scss';
+@import './assets/stylesheets/navBar.scss';
+@import './assets/stylesheets/form';
+@import './assets//stylesheets/listUsers';
+
+body{
+  padding: 0;
+  margin: 0;
+  font-family: "Segoe UI",Arial,sans-serif;
+}

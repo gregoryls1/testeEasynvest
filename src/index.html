@@ -9,7 +9,83 @@
 </head>
 
 <body>
-  <h1>Cadastro</h1>
+  <nav class="navbar">
+    <ul>
+      <li>
+        <a class="nav-links" href="#">Cadastro</a>
+      </li>
+      <li>
+        <a class="nav-links" href="#listUsers">Lista de Usuários</a>
+      </li>
+    </ul>
+  </nav>
+  <template id="form-template">
+    <form id="form" class="container form-user">
+      <div class="form-content">
+        <label for="name" class="form-label">Nome completo (sem abreviações)</label>
+        <input type="text" data-patternMismatch="O campo deve conter 3 caracteres ou mais."
+          data-valueMissing="Este campo é obrigatório." id="name" name="name" placeholder="João da Silva"
+          pattern=".{3,}" class="form-input" required>
+      </div>
+      <div class="form-content">
+        <label for="email" class="form-label">E-mail</label>
+        <input type="email" data-valueMissing="Este campo é obrigatório."
+          data-emailMismatch="Por favor, insira um e-mail válido." id="email" name="email" placeholder="joao@email.com"
+          class="form-input" required>
+      </div>
+      <div class="form-content">
+        <label for="cpf" class="form-label">CPF</label>
+        <input type="text" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" data-patternMismatch="Por favor, insira um CPF válido."
+          data-valueMissing="Este campo é obrigatório." data-mask="000.000.000-00" maxlength="14" id="cpf" name="cpf"
+          placeholder="067.450.840-82" class="form-input" required>
+      </div>
+      <div class="form-content">
+        <label for="phone" class="form-label">Telefone</label>
+        <input type="text" data-patternMismatch="Por favor, insira um telefone válido." data-mask="(00) 00000-0000"
+          data-valueMissing="Este campo é obrigatório." maxlength="15" pattern="\([0-9]{2}\) [0-9]{4,6}-[0-9]{4}$"
+          id="phone" name="phone" placeholder="(11) 99999-9999" class="form-input" required>
+      </div>
+      <button disabled class="button btn-add">
+        <span class="button-name">Cadastrar</span>
+        <span class="loader"></span>
+      </button>
+    </form>
+  </template>
+
+  <template id="list-template">
+    <div class="container list table-container">
+      <div class="row header">
+        <div class="list-title">
+          Nome
+        </div>
+        <div class="list-title">
+          E-mail
+        </div>
+        <div class="list-title">
+          CPF
+        </div>
+        <div class="list-title">
+          Telefone
+        </div>
+        <div class="list-title edit">
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <template id="list-user">
+    <div class="row">
+      <div class="column name"></div>
+      <div class="column email"></div>
+      <div class="column cpf"></div>
+      <div class="column phone"></div>
+      <div class="column-wrap">
+        <a href="#edit" class="btn-edit">Editar</a>
+      </div>
+    </div>
+  </template>
+
+  <section id="content"></section>
 </body>
 
 </html>

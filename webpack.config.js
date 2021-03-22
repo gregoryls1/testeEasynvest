@@ -6,7 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const devMode = process.env.NODE_ENV === 'development';
 
 let config = {
-  entry: './src/index.js',
+  entry: ['core-js/stable', 'regenerator-runtime/runtime',  './src/index.js'],
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'public'),

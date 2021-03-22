@@ -1,0 +1,62 @@
+.table-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  overflow-x: auto;
+  width: 70%;
+  margin: auto;
+
+  .header {
+    display: flex;
+    justify-content: space-around;
+    .list-title {
+      font-weight: bold;
+      background-color: $primary-color;
+      color: white;
+      padding: 5px;
+      height: 30px;
+    }
+  }
+  .list-title,
+  .column {
+    padding: 15px 5px;
+    min-width: 0;
+    line-height: 30px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1;
+
+    &.edit{
+      max-width: 60px;
+    }
+  }
+  .row {
+    display: flex;
+    align-items: center;
+    .btn-edit {
+      display: flex;
+      background: #00c8b3;
+      color: #ffffff;
+      font-size: 12px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 25px;
+      height: 25px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      width: 60px;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  input {
+    width: initial;
+  }
+}
