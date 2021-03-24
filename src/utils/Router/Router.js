@@ -5,17 +5,15 @@ export default class Router {
   }
 
   bind() {
-    window.addEventListener('hashchange', this.handleHashChange.bind(this));
-    window.addEventListener('load', this.handleHashChange.bind(this));
+    window.addEventListener('hashchange', this.changeHash.bind(this));
+    window.addEventListener('load', this.changeHash.bind(this));
   }
 
-  handleHashChange() {
+  changeHash() {
     const url = window.location.hash || '/';
-    const content = document.getElementById('content');
-    const match = (path, url) =>
-      url.match(new RegExp(path.replace(/:([^/]+)/g, '([^/]*)')));
+    const content = document.getElementById('root');
     const route = this.routes.find(
-      ({path, exact}) => (exact ? path === url : match(path, url))
+      ({ path, exact }) => (exact ? path === url : this.match(path, url))
     );
 
     if (content) {
@@ -30,17 +28,24 @@ export default class Router {
         }
 
         if (typeof route.controller === 'function') {
-          const stripedPath = match(route.path, url);
-          stripedPath.shift();
+          const requestPath = this.match(route.path, url);
+          
+          requestPath.shift();
 
           new route.controller(
-            stripedPath.reduce((params, value, index) => {
+            requestPath.reduce((params, value, index) => {
+
               params[paramsKeys[index].replace(':', '')] = value;
+
               return params;
             }, {})
           );
         }
       }
     }
+  }
+
+  match(path, url){
+    return url.match(new RegExp(path.replace(/:([^/]+)/g, '([^/]*)')))
   }
 }
